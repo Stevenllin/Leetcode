@@ -1,5 +1,3 @@
-
-
 /** Method 1 */
 /** Strategy 
  * @map is an object to store element of nums as key and the index as value
