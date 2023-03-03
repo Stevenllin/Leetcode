@@ -39,3 +39,23 @@ var searchInsert = function(nums, target) {
   
   return nums.indexOf(target)
 };
+
+/** Method 3
+ * Stragety
+ * @currentIndex is the index we want to find out
+ * 
+ * the method is to find the first number in @nums is bigger than target and return that number index @currentIndex
+ * if there is no number bigger than target then return 0 (default number is 0)
+*/
+var searchInsert = function(nums, target) {
+  if (nums.indexOf(target) >= 0) return nums.indexOf(target)
+
+  let currentIndex = 0;
+  let currentValue = nums[currentIndex]
+
+  while(currentValue < target) {
+    currentIndex++
+    currentValue = nums[currentIndex]
+  }
+  return currentIndex
+};
