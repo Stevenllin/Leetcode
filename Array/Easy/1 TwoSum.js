@@ -24,3 +24,24 @@ var twoSum = function(nums, target) {
     }
   }
 };
+
+/** Method 2 Brute Force
+ * @goal is the value that we want to find in this round of loop
+ * the second for loop start from the index i + 1 to avoid repeating
+ * if the @goal is exist in nums[i+1] ~ nums[nums.length] then return the index i and j
+ * 
+ * the disadvantage is nested for loop
+ * the time complexity is O(n^2) 
+*/
+
+var twoSum = function(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    const currentValue = nums[i]
+    const goal = target - currentValue
+    for (let j = i + 1; j < nums.length; j++) {
+      if (goal === nums[j]) {
+        return [i, j]
+      }
+    }
+  }
+};
