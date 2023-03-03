@@ -5,8 +5,8 @@
  * otherwise usind binary search method and return rightIndex + 1
  * 
  * Notice that while loop condition should contains equal operator to find out when target is smaller than the smallest number in @nums
+ * the time complexity could be O(logn)
 */
-
 var searchInsert = function(nums, target) {
   if (nums.indexOf(target) >= 0) return nums.indexOf(target)
 
@@ -25,4 +25,17 @@ var searchInsert = function(nums, target) {
   }
 
   return rightIndex + 1
+};
+
+/** Method 2 
+ * Strategy
+ * This method is add target to nums and sort again
+ * 
+ * the time complexity could be O(n)
+*/
+var searchInsert = function(nums, target) {
+  nums.push(target)
+  nums.sort((a, b) => a - b)
+  
+  return nums.indexOf(target)
 };
