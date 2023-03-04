@@ -59,3 +59,17 @@ var searchInsert = function(nums, target) {
   }
   return currentIndex
 };
+
+/** Method 4
+ * Strategy
+ * @targetNumber is the first number bigger than or equal to the @target
+ * 
+ * the index of @targetNumber is what we want
+ * And if there is all number in @nums is smaller than target then return the length of @nums
+*/
+var searchInsert = function(nums, target) {
+  const targetNumber = nums.filter(item => item >= target)[0]
+
+  if (!targetNumber) return nums.length
+  return nums.indexOf(targetNumber)
+}
