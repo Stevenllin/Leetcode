@@ -26,3 +26,25 @@ var generate = function(numRows) {
   }
   return result
 };
+
+/**
+ * Method 2
+ * Strategy
+ * 
+ * this method is similar to the method 1, the main difference is this method create the memory space before creating the current layer
+*/
+var generate = function(numRows) {
+  const result = []
+  for (let i = 0; i < numRows; i++) {
+    result.push(Array(i+1))
+
+    for (let j = 0; j <= i; j++) {
+      if (j === 0 || j === i) {
+        result[i][j] = 1
+      } else {
+        result[i][j] = result[i-1][j-1] + result[i-1][j]
+      }
+    }
+  }
+  return result
+};
