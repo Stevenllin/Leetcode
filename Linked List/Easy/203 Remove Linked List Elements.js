@@ -29,3 +29,27 @@ var removeElements = function(head, val) {
   return node.next
 };
 
+/** method 2
+ * 
+ * this method is to create new node and build these nodes as a Linked List
+ * 
+ * Notice that should set the next of @target to be null and @reference is equal to the next of @reference so that could be linked as list
+*/
+
+var removeElements = function(head, val) {
+  let node = new ListNode(0)
+  let reference = node
+
+  while(head !== null){
+    if(head.val !== val){
+      const target = new ListNode(head.val)
+      target.next = null
+      reference.next = target
+      reference = reference.next
+      head = head.next
+    }else{
+      head = head.next
+    }
+  }
+  return node.next
+};
