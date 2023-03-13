@@ -13,3 +13,11 @@ var reverseString = function(s) {
     s[s.length - i - 1] = temp
   }
 };
+
+/** method 2
+ * 
+ * Time complexity O(n)
+*/
+var reverseString = function(s) {
+  s.reverse()
+};
