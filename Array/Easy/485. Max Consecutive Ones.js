@@ -20,9 +20,7 @@ var findMaxConsecutiveOnes = function(nums) {
     }else{
       currentNum = 0
     }
-    if(currentNum >= max){
-      max = currentNum
-    }
+    max = Math.max(currentNum, max)
   }
 
   return max
