@@ -1,7 +1,7 @@
 /** method 1
  * 
- * @max is to store the current maximum number of consecutive when @nums do the iteration
- * @currentNum is to store current number of consecutive
+ * @max is to store the current maximum number 1 of consecutive when @nums do the iteration
+ * @currentNum is to store current number 1 of consecutive
  * 
  * when @currentNum is bigger than @max then set @max to @currentNum
  * 
@@ -26,4 +26,28 @@ var findMaxConsecutiveOnes = function(nums) {
   }
 
   return max
+};
+
+/** method 2
+ * 
+ * @result is to store all number 1 of consecutive
+ * 
+ * Math.max() time complexity O(n)
+ * 
+ * Time Complexity O(n)
+*/
+var findMaxConsecutiveOnes = function(nums) {
+  nums.push(0)
+  let result = []
+  let count = 0
+  for(let i = 0; i < nums.length; i++){
+    if(nums[i] === 1){
+      count += 1
+    }
+   if(nums[i] === 0){
+     result.push(count)
+     count = 0
+   }
+  }
+   return Math.max(...result)
 };
