@@ -23,3 +23,17 @@ var searchInsert = function(nums, target) {
   }
   return topIndex + 1
 }
+
+/** method 2 Linear search
+ * 
+ * @targetNumber is the first number in @nums is bigger than target
+ * if there is no such @targetNumber then return the length of @nums
+ * Otherwise use the method indexOf to find out the index of @targetNumber 
+ * 
+ * Time complexity O(n)
+*/
+var searchInsert = function(nums, target) {
+  const targetNumber = nums.filter(item => item >= target)[0]
+  if(!targetNumber) return nums.length
+  return nums.indexOf(targetNumber)
+}
