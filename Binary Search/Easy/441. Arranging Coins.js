@@ -24,3 +24,21 @@ var arrangeCoins = function(n) {
   }
   return top
 };
+
+/** method 2 Linear search
+ * 
+ * Time complexity O(n)
+ */
+
+var arrangeCoins = function(n) {
+  let sum = 0
+  for(let i = 1; i <= n; i++){
+    sum = sum + i
+    if(sum === n){
+      return i
+    }
+    if(sum > n){
+      return i-1
+    }
+  }
+};
