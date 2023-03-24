@@ -45,3 +45,17 @@ var isAnagram = function(s, t) {
   }
   return true
 };
+
+/** method 3
+ * 
+ * it's almost like method 1
+ * the difference is covert to string
+ */
+var isAnagram = function(s, t) {
+  if(s.length != t.length) return false;
+
+  var s = s.split("").sort().join("");
+  var t = t.split("").sort().join("");
+
+  return s == t;
+};
