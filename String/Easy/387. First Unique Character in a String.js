@@ -10,10 +10,10 @@ var firstUniqChar = function(s) {
   let obj = {}
 
   for(let i = 0; i < s.length; i++){
-    if(obj[[i]]){
-      obj[[i]] = obj[[i]] + 1
+    if(obj[s[i]]){
+      obj[s[i]] = obj[s[i]] + 1
     }else{
-      obj[[i]] = 1
+      obj[s[i]] = 1
     }
   }
 
@@ -34,13 +34,34 @@ var firstUniqChar = function(s) {
  * Time Limit Exceeded Not suggest
  */
 
- var firstUniqChar = function(s) {
+var firstUniqChar = function(s) {
   for(let i = 0; i < s.length; i++){
     const targetArray = [...s]
     targetArray.splice(i, 1)
     if(targetArray.indexOf(s[i]) === -1){
       return i
     }
+  }
+  return -1
+};
+
+/** method 3
+ *  
+ * the method is similar to method 1. Besides this method use array instead of object
+ * 
+ * Time complexity O(n)
+*/
+
+var firstUniqChar = function(s) {
+  let array = new Array(26)
+  array.fill(0)
+
+  for(let i = 0; i < s.length; i++){
+    array[s.charCodeAt(i) - 97]++
+  }
+
+  for(let i = 0; i < s.length; i++){
+    if(array[s.charCodeAt(i) - 97] === 1) return i
   }
   return -1
 };
