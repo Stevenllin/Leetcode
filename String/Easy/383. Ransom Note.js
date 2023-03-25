@@ -25,3 +25,20 @@ var canConstruct = function(ransomNote, magazine) {
   }
   return true
 };
+
+/** method 2
+ * 
+ * when char from @ransomNote is exist in @dicArr then remove that char from @dicArr 
+ * 
+ * Time complexity O(n^2)
+ */
+
+ const canConstruct = (ransomNote, magazine) => {
+  let dicArr = [...magazine];
+  for (const c of ransomNote) {
+    const index = dicArr.indexOf(c);
+    if (index < 0) return false;
+    dicArr.splice(index, 1);
+  }
+  return true;
+};
