@@ -4,7 +4,6 @@
  * 
  * Time Complexity O(n)
  */
-
 var findTheDifference = function(s, t) {
   let objS = {}
 
@@ -23,4 +22,21 @@ var findTheDifference = function(s, t) {
       return t[i]
     }
   }
+};
+
+/** method 2 
+ * 
+ * convert string @s @t to @arrayS @arrayT
+ * 
+ * Time Complexity O(n)
+ */
+var findTheDifference = function(s, t) {
+  if (!s.length) return t
+  const arrayS = [...s].sort()
+  const arrayT = [...t].sort()
+
+  for(let i = 0; i < s.length; i++){
+    if(arrayS[i] !== arrayT[i]) return arrayT[i]
+  }
+  return arrayT.pop()
 };
