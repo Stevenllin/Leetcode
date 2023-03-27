@@ -40,3 +40,24 @@ var findTheDifference = function(s, t) {
   }
   return arrayT.pop()
 };
+
+/** method 3 
+ * 
+ * convert each char from string @s @t to number respectively
+ * 
+ * Time Complexity O(n)
+ */
+var findTheDifference = function(s, t) {
+  let numberT = 0
+  let numberS = 0
+
+  for(let i = 0; i < t.length; i++){
+    numberT = numberT + t.charCodeAt(i)
+    
+    if(i < t.length - 1){
+      numberS = numberS + s.charCodeAt(i)
+    }
+  }
+
+  return String.fromCharCode(numberT-numberS)
+};
