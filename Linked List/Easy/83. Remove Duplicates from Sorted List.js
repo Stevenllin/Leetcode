@@ -1,7 +1,7 @@
 /** method 1 
  * 
  */
- var deleteDuplicates = function(head) {
+var deleteDuplicates = function(head) {
   if(head === null || head.next === null) return head;
 
   let current = head
