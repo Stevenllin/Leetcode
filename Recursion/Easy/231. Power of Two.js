@@ -13,3 +13,14 @@ var isPowerOfTwo = function(n) {
     return multiply(current)
   }
 };
+
+/** method 2 Iteration
+ * 
+ */
+var isPowerOfTwo = function(n) {
+  let current = 1
+  while(current < n){
+    current = current * 2
+  }
+  return current === n
+};
