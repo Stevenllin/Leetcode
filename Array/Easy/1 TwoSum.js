@@ -1,14 +1,12 @@
-/** Method 1 */
-/** Strategy 
- * @map is an object to store element of nums as key and the index as value
- * @currentValue : the value of each loop of nums
- * @target - @currentValue : the value might be stored in our @map
+/** 練習兩次 */
 
- * if the value of index @target - @currentValue in @map is greater than or equal to 0, which means this number is we want to find
-  then return this round index i and the previous one @target - @currntValue
- * otherwise store this round index as value and value as key in our @map for the rest of loop
+/** Method 1 
+* 策略：透過一個以陣列的元素為 key、 index 為 value 的 Hash map @map ，以實現單一的 for loop 即能找到答案。
+* 每一次遞迴 判斷目標值 @target - @currentValue 是否存在於 @map ，若存在即返回兩個 index，若不存在將此輪的陣列元素 key 與 index 儲存 
 
- * the time complexity could be O(n)
+* 注意：必須判斷 @target - @currentValue 在 @map 中是否存在後，才能將此輪 index @i  儲存於 @map 的 @currentValue
+
+* 時間複雜度為 O(n)
 */
 var twoSum = function(nums, target) {
   let map = {}
@@ -23,13 +21,12 @@ var twoSum = function(nums, target) {
   }
 };
 
-/** Method 2 Brute Force
- * @goal is the value that we want to find in this round of loop
- * the second for loop start from the index i + 1 to avoid repeating
- * if the @goal is exist in nums[i+1] ~ nums[nums.length] then return the index i and j
+/** Method 2 
+ * 策略：此方法透過兩層的 for loop (不建議)
  * 
- * the disadvantage is nested for loop
- * the time complexity is O(n^2) 
+ * 注意：第二個 for loop 的 @j 初始值為 @i + 1，以減少重複尋找答案 
+ * 
+ * 時間複雜度 O(n^2)
 */
 
 var twoSum = function(nums, target) {
