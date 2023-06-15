@@ -19,3 +19,27 @@ var hasCycle = function(head) {
 
   return false
 };
+
+/** Method 2
+ * 策略：此方法是透過快、慢指針，若當前在快、慢指針的節點相等，代表此 Linked List 是循環的
+ * 
+ * Time complexity O(n)
+ */
+
+var hasCycle = function(head) {
+  if (!head || !head.next) return false
+
+  let slow = head.next
+  let fast = head.next.next
+
+  while (slow && fast) {
+    if (slow === fast) {
+      return true
+    }
+    if (!fast.next) return false
+    slow = slow.next
+    fast = fast.next.next
+  }
+
+  return false
+};
