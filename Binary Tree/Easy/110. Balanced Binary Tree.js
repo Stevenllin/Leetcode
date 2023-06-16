@@ -1,5 +1,11 @@
-/** method 1 
+/** 練習兩次 */
+
+/** Method 1 
+ * 策略：比較每一節點的左右兩邊是否差距大於 1，若僅一個節點大於，則回傳 false
  * 
+ * 注意：每一節點皆會都會被上一個節點重複計算過一次
+ * 
+ * 時間複雜度為：nlog(n)
  */
 var isBalanced = function(root) {
   if (root === null || (root.left === null && root.right === null)) return true
