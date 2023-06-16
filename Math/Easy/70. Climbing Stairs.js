@@ -10,7 +10,7 @@ var climbStairs = function(n) {
   let array = [0, 1, 2]
 
   for (let i = 3; i <= n; i++) {
-    array[n] = array[i-1] + array[i-2]
+    array[i] = array[i-1] + array[i-2]
   }
   return array[n]
 };
