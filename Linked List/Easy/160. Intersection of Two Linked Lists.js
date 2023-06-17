@@ -1,27 +1,28 @@
-/** method 1
+/** 練習兩次 */
+
+/** Method 1
+ * 策略：將兩個 Linked List 的長度一致，再同時遞迴找尋交集點
  * 
- * calculate the difference between the length of @headA and @headB
- * According to the @difference set the length of @headA and @headB to be equal
+ * 注意：交集點並非是兩個值相等的點，而是該節點之後的每個點連接至下個節點都是相同的
  * 
- * And loop over modified @headA and @headB
- * if @headA is equal to @headB then return @headA
- * 
+ * 時間複雜度為：O(n)
 */
-
 var getIntersectionNode = function(headA, headB) {
-  const difference = getDifference(headA, headB)
-  const absDifference = Math.abs(difference)
+  const lengthA = countLength(headA)
+  const lengthB = countLength(headB)
+  let diff = Math.abs(lengthA-lengthB)
 
-  if(difference < 0){
-    for(let i = 0; i < absDifference; i++){
-      headB = headB.next
+  if(lengthA > lengthB){
+    while(diff > 0){
+      headA = headA.next
+      diff--
     }
   }else{
-    for(let i = 0; i < absDifference; i++){
-      headA = headA.next
+    while(diff > 0){
+      headB = headB.next
+      diff--
     }
   }
-
   while(headA && headB){
     if(headA === headB){
       return headA
@@ -30,18 +31,13 @@ var getIntersectionNode = function(headA, headB) {
     headB = headB.next
   }
   return null
-};
+}
 
-function getDifference(headA, headB) {
-  let timesA = 0
-  let timesB = 0 
-  while (headA) {
-    timesA++
-    headA = headA.next
+function countLength(list){
+  let count = 0
+  while(list){
+      list = list.next
+      count++
   }
-  while (headB) {
-    timesB++
-    headB = headB.next
-  }
-  return timesA - timesB
+  return count
 }
