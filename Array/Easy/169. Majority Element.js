@@ -1,45 +1,23 @@
-/** method 1
- * @obj an object to store the number of each number in an array @nums
+/** 練習兩次 */
+
+/** Method 1
+ * 策略：透過 @map 紀錄所有值出現的次數，若當前值的次數在遞迴中已大於陣列長度一半，即回傳當前值
  * 
- * if the length of @nums just return the only number
+ * 注意：若 @nums 的長度大小僅為一，回傳陣列值
  * 
- * Notice that each loop also check the number of target number is bigger than the length of @nums / 2
- * Time complexity O(n)
+ * 時間複雜度為 O(n)
 */
 
 var majorityElement = function(nums) {
   if (nums.length === 1) return nums[0]
-  let obj = {}
+  let map = {}
 
   for(let i = 0; i < nums.length; i++){
-    if (obj[nums[i]]) {
-      obj[nums[i]] = obj[nums[i]] + 1
-      if (obj[nums[i]] >= (nums.length/2)) {
-        return nums[i]
-      }
+    if(!map[nums[i]]){
+      map[nums[i]] = 1
     }else{
-      obj[nums[i]] = 1
+      map[nums[i]] = map[nums[i]] + 1
+      if (map[nums[i]] > (nums.length/2)) return nums[i]
     }
-  }
-};
-
-/** method 1
- * the only difference between method 1 and method 2 is using the Map data structure
-*/
-
-var majorityElement = function(nums) {
-  let map = new Map()
-
-  for(let i = 0; i < nums.length; i++){
-      let targetTimes = map.get(nums[i])
-
-      if(targetTimes == undefined){
-          map.set(nums[i], 1)
-      }else{
-          map.set(nums[i], targetTimes+1)
-          if (targetTimes+1) {
-            return nums[i]
-          }
-      }
   }
 };
