@@ -5,7 +5,7 @@
  * 
  * 注意：因題目提示若 x 為 8，答案是 2，因此，最後答案需回傳 @right
  * 
- * 時間複雜度為 O(n)
+ * 時間複雜度為 O(logn)
  */
 
 var mySqrt = function(x) {
