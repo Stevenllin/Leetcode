@@ -1,33 +1,28 @@
-/** method 1 binary search 
- * Strategy
+/** 練習兩次 */
+
+/** Method 1 
+ * 策略：以 Binary Search 快速找到每輪遞迴的目標值 @target 與 @x 進行比較
  * 
- * @middle is the average of @top and @bottom
- * Compare @x with the square of @middle
+ * 注意：因題目提示若 x 為 8，答案是 2，因此，最後答案需回傳 @right
  * 
- * smaller which means value @top need to be decreased
- * bigger which means value @bottom need to be increased
- * equal then return @middle
- * 
- * if we can't find out the value, the @bottom is bigger than @top now so return the @top
- * 
- * Time complexity O(logn)
+ * 時間複雜度為 O(n)
  */
 
 var mySqrt = function(x) {
-  if (x < 2) return x
-  let top = x
-  let bottom = 1
+  let left = 1
+  let right = x
 
-  while(bottom <= top){
-    let middle = Math.floor((top + bottom)/2)
+  while(left <= right){
+    let middle = Math.floor((left+right)/2)
     const target = middle * middle
-    if(target === x){
-      return middle
-    }else if(target < x){
-      bottom = middle + 1
+
+    if(x < target){
+      right = middle - 1  
+    }else if (x > target){
+      left = middle + 1  
     }else{
-      top = middle - 1
+      return middle  
     }
   }
-  return top
+  return right
 };
