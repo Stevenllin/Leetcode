@@ -1,45 +1,12 @@
-/** 
- * Method 1
- * Strategy
+/** 練習兩次 */
+
+/** Method 1
+ * 策略：從陣列最後一項開始遞迴，每輪數值 +1，若大於 9，重新設定為 0，反之，可以直接返回 @digits
  * 
- * @index index of current target number in @digits
+ * 注意：若 for loop 結束，代表陣列的第一個元素亦為 9，且因加上 1，因此，需要插入一個 1 作為第一個元素
  * 
- * first of all check the units digit is 9 or not
- * if the units digit is not equal to 9 then add one and return the array @digits
- * 
- * if the units digit is 9 then keep adding one to relative target number from the last number until current target number is not 9
- * and if the @index is equal to -1, which means the first number in @digits add one so we need to unshift(1) the array
- * 
- * Notice that because the number is possibly bigger than Max number in Javascript. So we can not solve this by using Number
- * 
+ * 時間複雜度為 O(n)
 */
-
-var plusOne = function(digits) {
-  if (digits[digits.length - 1] !== 9) {
-    digits[digits.length - 1]++
-    return digits
-  } else {
-    let index = digits.length - 1
-    while(digits[index] === 9) {
-      digits[index] = 0
-      index--
-    }
-    if (index === -1) {
-      digits.unshift(1)
-    } else {
-      digits[index] = digits[index] + 1
-    }
-    return digits
-  }
-};
-
-/**
- * Method 2
- * Strategy
- * 
- * it's similiar to the method 1 but it's more brief
-*/
-
 var plusOne = function(digits) {
   for (let i = digits.length - 1; i >= 0; i--) {
     digits[i]++
