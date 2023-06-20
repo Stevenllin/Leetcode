@@ -1,39 +1,23 @@
-/** method 1 binary search
- * Strategy
- * 
- * Because the @nums is a sorted array so use the binary search is faster than linear search
- * 
- * Time complexity O(logn)
-*/ 
+/** 練習兩次 */
 
+/** Method 1 
+ * 策略：題目提到時間複雜度需 O(logn)，且是已排序到的陣列 @nums ，因此，可透過 Binary Search 解決問題
+ * 
+ * 時間複雜度為 O(logn)
+ */
 var searchInsert = function(nums, target) {
-  let bottomIndex = 0
-  let topIndex = nums.length - 1
+  let left = 0
+  let right = nums.length - 1
 
-  while(bottomIndex <= topIndex){
-    let middleIndex = Math.floor((bottomIndex + topIndex)/2)
-    
-    if(nums[middleIndex] === target){
-      return middleIndex
-    }else if(nums[middleIndex] > target){
-      topIndex = middleIndex - 1
-    }else if(nums[middleIndex] < target){
-      bottomIndex = middleIndex + 1
+  while(left <= right){
+    let middle = Math.floor((left+right)/2)
+    if(nums[middle] > target){
+      right = middle - 1
+    }else if(nums[middle] < target){
+      left = middle + 1
+    }else{
+      return middle
     }
   }
-  return topIndex + 1
-}
-
-/** method 2 Linear search
- * 
- * @targetNumber is the first number in @nums is bigger than target
- * if there is no such @targetNumber then return the length of @nums
- * Otherwise use the method indexOf to find out the index of @targetNumber 
- * 
- * Time complexity O(n)
-*/
-var searchInsert = function(nums, target) {
-  const targetNumber = nums.filter(item => item >= target)[0]
-  if(!targetNumber) return nums.length
-  return nums.indexOf(targetNumber)
+  return left
 }
