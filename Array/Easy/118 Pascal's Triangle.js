@@ -1,29 +1,28 @@
-/** 
- * Method 1
- * Strategy
+/** 練習兩次 */
+
+/** Method 1
+ * 策略：此方法是透過 @result 最後一層的 @target 推測準備加入的下一層 @array ，完成運算後再加入至 @result 。
  * 
- * @previousNumber is the previous layer of array
- * 
- * the first and second layer return the answer directly
- * if the numRows are bigger than 2 then create this layer according to the @previousNumber and push it to the @result for the next layer
+ * 注意：運算是 @array 的值是由 @target 遞迴，每一輪 @j 的值 + 下一輪 @j + 1 的值
  * 
  * Time complexity O(n*n)
 */
 var generate = function(numRows) {
-  if (numRows === 1) return [[1]]
-  if (numRows === 2) return [[1], [1, 1]]
+  const result = []
+  if(numRows >= 1) result.push([1])
+  if(numRows >= 2) result.push([1, 1])
 
-  const result = [[1], [1, 1]]
-  for (let i = 1; i < numRows-1; i++) {
-    const previousNumber = result[i]
-    const target = [1]
-
-    for (let i = 0; i < previousNumber.length - 1; i++) {
-      target.push(previousNumber[i] + previousNumber[i+1])
+  for(let i = 2; i < numRows; i++){
+    const target = result[result.length-1]
+    const array = []
+    array.push(1)
+    for(let j = 0; j < target.length-1; j++){
+      array.push(target[j]+target[j+1])
     }
-    target.push(1)
-    result.push(target)
+    array.push(1)
+    result.push(array)
   }
+
   return result
 };
 
