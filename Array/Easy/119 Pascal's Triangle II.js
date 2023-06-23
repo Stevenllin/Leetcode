@@ -1,39 +1,30 @@
+/** 練習兩次 */
+
 /** Method 1
- * Strategy
+ * 策略：與 118 類似，差異是僅回傳陣列 @result 最後一個元素
  * 
- * @prev is the previous layer
- * @cur is the current layer
- * @index the index of current layer
- * 
- * the method is to create the @cur according to the @prev
- * if @index is equal to the target index @rowIndex then return @cur
- * other set the @prev to @cur and continue with the next loop
 */
 
 var getRow = function(rowIndex) {
-  if(rowIndex == 0) return [1]
-  if(rowIndex == 1) return [1, 1]
+  const result = []
+  if(rowIndex >= 0) result.push([1])
+  if(rowIndex >= 1) result.push([1, 1])
 
-  let prev = [1, 1]
-  let index = 2
-  while (index <= rowIndex) {
-      const cur = [1]
-      for (let i = 0; i < prev.length-1; i++){
-          cur.push(prev[i]+prev[i+1])
-      }
-      cur.push(1)
-      if (index !== rowIndex) {
-          prev = cur
-      } else {
-          return cur
-      }
-      index++
+  for(let i = 2; i <= rowIndex; i++){
+    const target = result[result.length-1]
+    const array = []
+    array.push(1)
+    for(let j = 0; j < target.length-1; j++){
+      array.push(target[j]+target[j+1])
+    }
+    array.push(1)
+    result.push(array)
   }
+  return result[rowIndex]
 };
 
 /** Method 2 advanced
  * Strategy
- * 
  * 
 */
 
