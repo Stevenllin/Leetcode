@@ -23,16 +23,12 @@ var singleNumber = function(nums) {
   }
 };
 
-/** method 2
- * Strategy 
+/** Method 2
+ * 策略：由於題目提示數字除了出現一次就是兩次，因此，可以先排列好陣列。每一輪遞迴，檢查前兩元素是否相等，相等則移除前兩位，否則，跳出 for loop，回傳第一個陣列值
  * 
- * only compare the first and the second element @nums if it's not equal then remove these two elements from @nums
- * otherwise break the for loop and return the first element
+ * 注意： @length 是為了鎖定 @nums 的長度大小，因 splice 方法會不斷移除 @nums
  * 
- * Notice that we need to store @length first
- * because the length of @nums will be changed after removing element
- * 
- * this method is slower than the method 1 because of sort method
+ * 時間複雜度為 O(nlogn)
 */
 var singleNumber = function(nums) {
   const length = nums.length
