@@ -1,27 +1,25 @@
-/** method 1 
- * Strategy
+/** 練習兩次 */
+
+/** Method 1 
+ * 策略：透過 @object 紀錄所有值出現得字數
  * 
- * @obj is an object to store all element as key and the number of occurrences of the element as value
- * 
- * And use the for loop to check @obj and return the key which the value is equal to 1
- * 
- * Time complexity O(n)
+ * 時間複雜度為 O(n)
 */
 var singleNumber = function(nums) {
-  let obj = {}
+  if(nums.length === 1) return nums[0]
 
-  for (let i = 0; i < nums.length; i++) {
-    if (obj[nums[i]]) {
-      obj[nums[i]]++
-    } else {
-      obj[nums[i]] = 1
+  const object = {}
+
+  for(let i = 0; i < nums.length; i++){
+    if(!object[nums[i]]){
+      object[nums[i]] = 1  
+    }else{
+      object[nums[i]] = object[nums[i]] + 1  
     }
   }
 
-  for (item in obj) {
-    if (obj[item] === 1) {
-      return item
-    }
+  for(item in object){
+    if(object[item] === 1) return item  
   }
 };
 
