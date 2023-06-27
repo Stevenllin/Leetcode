@@ -1,34 +1,9 @@
-/** method 1
- * 
- * @obj an object to store the number of each number in an array @nums
- * 
- * Notice that if obj[nums[i]] is exist which represent the number is duplicated then return true
+/** 練習兩次 */
+
+/** Method 1
+ * 策略：透過 Set 資料結構去除重複的數值，並比較陣列 @nums 與轉換後 @numsSet 的長度大小。
 */
-
 var containsDuplicate = function(nums) {
-  let obj = {}
-
-  for (let i = 0; i < nums.length; i++) {
-    if (obj[nums[i]]) {
-      return true
-    } else {
-      obj[nums[i]] = 1
-    }
-  }
-  return false
-};
-
-/** method 2
- * @set Set data structure is an object to store unique values of any type
- * 
- * SO if the length of @nums is not equal to the size of @set wnhich represent there are duplicated number in array @nums
-*/
-
-var containsDuplicate = function(nums) {
-  const set = new Set(nums)
-
-  const setLength = set.size
-  const arrayLength = nums.length
-
-  return setLength !== arrayLength
+  const numsSet = new Set(nums)
+  return nums.length !== numsSet.size
 };
