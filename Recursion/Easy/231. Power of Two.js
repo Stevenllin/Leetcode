@@ -10,3 +10,10 @@ var isPowerOfTwo = function(n) {
   }
   return current === n
 };
+
+/** Method 2
+ * 策略：轉換二進制思考，1 = 1、2 = 10、4 = 100、8 = 1000，因此，判斷是否只有最高位元為 1。
+ */
+var isPowerOfTwo = function(n) {
+  return n > 0 && (n & (n-1)) == 0
+};
