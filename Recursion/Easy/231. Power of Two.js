@@ -1,24 +1,10 @@
-/** method 1 Recursion 
- * 
- */
+/** 練習兩次 */
 
-var isPowerOfTwo = function(n) {
-  if (n === 1) return true
-  return multiply(2)
-
-  function multiply(current){
-    if (current > n) return false
-    if (current === n) return true
-    current = current * 2
-    return multiply(current)
-  }
-};
-
-/** method 2 Iteration
- * 
+/** Method 1 
+ * 策略：透過 while loop，每遞回一次當前值 @current * 2
  */
 var isPowerOfTwo = function(n) {
-  let current = 1
+  let current = 1 
   while(current < n){
     current = current * 2
   }
