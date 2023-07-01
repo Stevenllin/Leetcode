@@ -16,3 +16,15 @@ var addDigits = function(num) {
   }
   return num
 };
+
+/** Method 2
+ * 策略：此題目以偏向數學範圍
+ * 
+ * 時間複雜度 O(1)
+ */
+
+var addDigits = function(num) {
+  if(num == 0) return 0;
+  if(num % 9 == 0) return 9;
+  return num % 9;
+};
