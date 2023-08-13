@@ -14,3 +14,24 @@ var climbStairs = function(n) {
   }
   return array[n]
 };
+
+/** Method 2 Time Limit Exceeded
+ * 策略：利用 Tree 遍歷所有路徑可能，若計算路徑最終 @current 為零，則計算 @number
+ * 
+ * 時間複雜度為：
+ */
+var climbStairs = function(n) {
+  let number = 0
+  findPath(n)
+  function findPath(current){
+    if(current === 0){
+      number++
+      return  
+    }
+    if(current < 0){
+      return
+    }
+    return findPath(current-1) || findPath(current-2)
+  }
+  return number
+};
