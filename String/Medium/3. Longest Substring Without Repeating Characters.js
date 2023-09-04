@@ -23,3 +23,30 @@ var lengthOfLongestSubstring = function(s) {
   }
   return longest
 };
+
+/** Method 2
+ * 策略：
+ * 1. 透過 @set 加入當前不重複的字串，@left 是字串左點 index，@right 是字串右點 index
+ * 2. 若 @set 包含右點的字母，不斷在 @set 移除左點 @left 的字母 ，直到 @set 不包含右點的字母
+ * 3. 若 @set 不包含左點的字母，加入目前字母，將左 @left 右 @right 相差後與 @longest 長度大小比較
+ */
+var lengthOfLongestSubstring = function(s) {
+  let left = 0
+  let longest = 0
+  let set = new Set
+
+  for(let right = 0; right < s.length; right++){
+    if(!set.has(s[right])){
+      set.add(s[right])
+      longest = Math.max(longest, right-left+1)
+    }else{
+      while(set.has(s[right])){
+        set.delete(s[left])
+        left++
+      }
+      set.add(s[right])  
+    }  
+  }
+
+  return longest
+};
